@@ -4,17 +4,15 @@ import 'package:vita_log/models/registro.dart';
 
 class HiveRegistroController {
   final BuildContext context;
-  final Function fetchData;
 
-  HiveRegistroController({required this.context, required this.fetchData});
+  HiveRegistroController({required this.context});
 
   final hiveBoxRegistro = Hive.box('vita_log_registro');
 
   List<Registro> fetch() {
     return hiveBoxRegistro.keys
         .map((key) {
-          final item = hiveBoxRegistro.get(key) as Map<String, dynamic>;
-
+          final item = hiveBoxRegistro.get(key);
           return Registro.fromMap(item);
         })
         .toList()
@@ -35,6 +33,7 @@ class HiveRegistroController {
             )
           : null;
     } catch (e) {
+      print("Erro hive_registro_controller: $e");
       context.mounted
           ? ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

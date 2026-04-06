@@ -4,7 +4,6 @@ class Registro extends Equatable {
   final String id;
   final String type;
   final String? imagePath;
-  final String? audioPath;
   final double humorLevel;
   final String? note;
   final DateTime timestamp;
@@ -14,7 +13,6 @@ class Registro extends Equatable {
     String? id,
     required this.type,
     this.imagePath,
-    this.audioPath,
     required this.humorLevel,
     this.note,
     DateTime? timestamp,
@@ -27,7 +25,6 @@ class Registro extends Equatable {
     id,
     type,
     imagePath,
-    audioPath,
     humorLevel,
     note,
     timestamp,
@@ -39,7 +36,6 @@ class Registro extends Equatable {
       "id": id,
       "type": type,
       "imagePath": imagePath,
-      "audioPath": audioPath,
       "humorLevel": humorLevel,
       "note": note,
       "timestamp": timestamp.millisecondsSinceEpoch,
@@ -47,12 +43,11 @@ class Registro extends Equatable {
     };
   }
 
-  factory Registro.fromMap(Map<String, dynamic> map) {
+  factory Registro.fromMap(Map map) {
     return Registro(
       id: map['id'],
       type: map['type'],
       imagePath: map['imagePath'],
-      audioPath: map['audioPath'],
       humorLevel: map['humorLevel'],
       note: map['note'],
       timestamp: DateTime.fromMillisecondsSinceEpoch(map['timestamp']),
