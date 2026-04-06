@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -10,8 +11,9 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('vita_log_registro');
   await Hive.openBox('vita_log_config');
-
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatefulWidget {

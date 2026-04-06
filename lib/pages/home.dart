@@ -41,13 +41,13 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             SizedBox(
-              height: h * .8,
+              height: h * .9,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   final e = registros[index];
                   return ListTile(
-                    leading: e.imagePath != null
+                    leading: e.imagePath != null && e.imagePath != ''
                         ? Image.file(File(e.imagePath!))
                         : null,
                     title: Text(e.type),
