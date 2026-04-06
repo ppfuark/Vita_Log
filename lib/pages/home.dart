@@ -1,12 +1,10 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:vita_log/app_style.dart';
 import 'package:vita_log/controller/hive_registro_controller.dart';
 import 'package:vita_log/models/registro.dart';
 import 'package:vita_log/pages/widgets/new_registro.dart';
+import 'package:vita_log/pages/widgets/pie_chart_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -42,7 +40,7 @@ class _HomeState extends State<Home> {
                 color: AppStyle.primary,
                 borderRadius: BorderRadius.circular(999),
               ),
-              child: Icon(Icons.person, size: 30, color: Colors.white,),
+              child: Icon(Icons.person, size: 30, color: Colors.white),
             ),
             Text(
               "VitaLog",
@@ -51,9 +49,7 @@ class _HomeState extends State<Home> {
           ],
         ),
         actions: [
-          IconButton(onPressed: (){
-
-          }, icon: Icon(Icons.notifications))
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -71,6 +67,7 @@ class _HomeState extends State<Home> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: h * .3,child: PieChartWidget()),
                   Text(
                     'Histórico',
                     style: AppStyle.display.copyWith(
