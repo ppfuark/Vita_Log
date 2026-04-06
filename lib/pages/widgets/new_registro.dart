@@ -52,7 +52,7 @@ class _NewRegistroState extends State<NewRegistro> {
         ),
       );
 
-      Navigator.pop(context);
+      Navigator.pushNamedAndRemoveUntil(context, 'home/', (routes) => false);
     }
   }
 
