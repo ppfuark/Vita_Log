@@ -7,14 +7,14 @@ import 'package:vita_log/pages/widgets/bar_chart_widget.dart';
 import 'package:vita_log/pages/widgets/new_registro.dart';
 import 'package:vita_log/pages/widgets/pie_chart_widget.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();

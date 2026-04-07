@@ -36,7 +36,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Humor - PieChart', style: AppStyle.title.copyWith(color: AppStyle.primary)),
+        Text('Type - PieChart', style: AppStyle.title.copyWith(color: AppStyle.primary)),
         Expanded(
           child: PieChart(
             PieChartData(
