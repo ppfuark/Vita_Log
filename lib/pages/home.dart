@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vita_log/app_style.dart';
 import 'package:vita_log/controller/hive_registro_controller.dart';
 import 'package:vita_log/models/registro.dart';
+import 'package:vita_log/pages/widgets/bar_chart_widget.dart';
 import 'package:vita_log/pages/widgets/new_registro.dart';
 import 'package:vita_log/pages/widgets/pie_chart_widget.dart';
 
@@ -67,7 +68,21 @@ class _HomeState extends State<Home> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: h * .3,child: PieChartWidget()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        height: h * .3,
+                        width: w * .45,
+                        child: PieChartWidget(),
+                      ),
+                      SizedBox(
+                        height: h * .3,
+                        width: w * .45,
+                        child: BarChartWidget(),
+                      ),
+                    ],
+                  ),
                   Text(
                     'Histórico',
                     style: AppStyle.display.copyWith(

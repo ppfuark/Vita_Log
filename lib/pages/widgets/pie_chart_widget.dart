@@ -14,6 +14,8 @@ class PieChartWidget extends StatefulWidget {
 class _PieChartWidgetState extends State<PieChartWidget> {
   List<Color> colors = [Colors.amber, Colors.green, Colors.blue, Colors.red];
 
+  int touchedIdx = -1;
+
   @override
   Widget build(BuildContext context) {
     final HiveRegistroController hiveRegistroController =
@@ -31,24 +33,43 @@ class _PieChartWidgetState extends State<PieChartWidget> {
       return {'type': e.key, 'value': e.value};
     }).toList();
 
-    return PieChart(
-      PieChartData(
-        pieTouchData: PieTouchData(
-          touchCallback: (FlTouchEvent event, pieTouchResponse) {},
-        ),
-        centerSpaceRadius: 40,
-        sections: [
-          for (var i in data)
-            PieChartSectionData(
-              color: colors[data.indexOf(i)],
-              value: (double.tryParse(i['value'].toString())) ?? 0,
-              title: ((double.tryParse(i['value'].toString()) ?? 0)
-                  .round()
-                  .toString()),
-              titleStyle: AppStyle.headline.copyWith(color: Colors.white),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Humor - PieChart', style: AppStyle.title.copyWith(color: AppStyle.primary)),
+        Expanded(
+          child: PieChart(
+            PieChartData(
+              pieTouchData: PieTouchData(
+                touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                  if (pieTouchResponse != null &&
+                      pieTouchResponse.touchedSection != null) {
+                    touchedIdx =
+                        pieTouchResponse.touchedSection!.touchedSectionIndex;
+                    setState(() {});
+                  }
+                },
+              ),
+              centerSpaceRadius: 40,
+              sectionsSpace: 0,
+              borderData: FlBorderData(show: false),
+
+              sections: [
+                for (var i in data)
+                  PieChartSectionData(
+                    color: colors[data.indexOf(i)],
+                    value: (double.tryParse(i['value'].toString())) ?? 0,
+                    title: ((double.tryParse(i['value'].toString()) ?? 0)
+                        .round()
+                        .toString()),
+                    titleStyle: AppStyle.headline.copyWith(color: Colors.white),
+                    radius: data.indexOf(i) == touchedIdx ? 100 : 80,
+                  ),
+              ],
             ),
-        ],
-      ),
+          ),
+        ),
+      ],
     );
   }
 }
