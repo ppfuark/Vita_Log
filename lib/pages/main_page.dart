@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vita_log/pages/home_page.dart';
+import 'package:vita_log/pages/map_page.dart';
 import 'package:vita_log/pages/record_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int currentIdx = 0;
-  final widgets = [HomePage(), RecordPage()];
+  final widgets = [HomePage(), RecordPage(), MapPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class _MainPageState extends State<MainPage> {
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.mic), label: 'Recording'),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
         ],
       ),
     );

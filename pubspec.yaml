@@ -46,6 +46,15 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_sound: ^9.30.0
   audioplayers: ^6.6.0
+  http: ^1.6.0
+  flutter_polyline_points: ^3.1.0
+  location: ^8.0.1
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  flutter_map_location_marker: ^10.2.0
+  flutter_map_tile_caching: ^10.1.1
+  geolocator: ^14.0.2
+  sensors_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:
